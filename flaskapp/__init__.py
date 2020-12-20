@@ -16,7 +16,7 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
-from app import routes, model, errors
+from flaskapp import routes, model, errors
 
 if not app.debug:
     if app.config['MAIL_SERVER']:

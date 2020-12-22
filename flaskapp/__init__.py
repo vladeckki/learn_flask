@@ -6,6 +6,7 @@ from flask_login import LoginManager
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+from flask_mail import Mail
 
 # Flask использует местоположение переданного здесь модуля в качестве отправной точки, когда ему
 # необходимо загрузить связанные ресурсы, такие как файлы шаблонов.
@@ -15,6 +16,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
+mail = Mail(app)
 
 from flaskapp import routes, model, errors
 

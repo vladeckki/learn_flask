@@ -7,6 +7,8 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask_mail import Mail
+from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 
 # Flask использует местоположение переданного здесь модуля в качестве отправной точки, когда ему
 # необходимо загрузить связанные ресурсы, такие как файлы шаблонов.
@@ -17,6 +19,8 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 mail = Mail(app)
+bootstrap = Bootstrap(app)
+moment = Moment(app)
 
 from flaskapp import routes, model, errors
 

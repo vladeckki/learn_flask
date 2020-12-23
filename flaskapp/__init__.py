@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -9,6 +9,8 @@ import os
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from flask_babel import Babel, lazy_gettext as _l
+
 
 # Flask использует местоположение переданного здесь модуля в качестве отправной точки, когда ему
 # необходимо загрузить связанные ресурсы, такие как файлы шаблонов.
@@ -21,6 +23,8 @@ login.login_view = 'login'
 mail = Mail(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
+babel = Babel(app)
+login = LoginManager(app)
 
 from flaskapp import routes, model, errors
 
@@ -51,3 +55,13 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    # return 'es'
+
+
+login.login_view = 'login'
+login.login_message = _l('Please log in to access this page.')

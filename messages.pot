@@ -1,0 +1,79 @@
+# Translations template for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-12-23 16:05+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: flaskapp/__init__.py:66
+msgid "Please log in to access this page."
+msgstr ""
+
+#: flaskapp/forms.py:9
+msgid "Username"
+msgstr ""
+
+#: flaskapp/routes.py:23
+msgid "Your post is now live!"
+msgstr ""
+
+#: flaskapp/routes.py:59
+msgid "Invalid username or password"
+msgstr ""
+
+#: flaskapp/routes.py:79
+msgid "Congratulations, you are now a registered user!"
+msgstr ""
+
+#: flaskapp/routes.py:120
+msgid "Your changes have been saved."
+msgstr ""
+
+#: flaskapp/routes.py:134 flaskapp/routes.py:150
+#, python-format
+msgid "User %(username)s not found."
+msgstr ""
+
+#: flaskapp/routes.py:137
+msgid "You cannot follow yourself!"
+msgstr ""
+
+#: flaskapp/routes.py:141
+#, python-format
+msgid "You are following %(username)s!"
+msgstr ""
+
+#: flaskapp/routes.py:153
+msgid "You cannot unfollow yourself!"
+msgstr ""
+
+#: flaskapp/routes.py:171
+msgid "Your password has been reset."
+msgstr ""
+
+#: flaskapp/templates/_post.html:14
+#, python-format
+msgid "%(username)s said %(when)s"
+msgstr ""
+
+#: flaskapp/templates/error_404.html:4
+msgid "File Not Found"
+msgstr ""
+
+#: flaskapp/templates/index.html:4
+#, python-format
+msgid "Hi, %(username)s!"
+msgstr ""
+

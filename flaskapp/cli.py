@@ -14,7 +14,7 @@ def update():
     """Update all languages."""
     if os.system('pybabel extract -F babel.cfg -k _l -o messages.pot .'):
         raise RuntimeError('extract command failed')
-    if os.system('pybabel update -i messages.pot -d app/translations'):
+    if os.system('pybabel update -i messages.pot -d flaskapp/translations'):
         raise RuntimeError('update command failed')
     os.remove('messages.pot')
 
@@ -22,7 +22,7 @@ def update():
 @translate.command()
 def compile():
     """Compile all languages."""
-    if os.system('pybabel compile -d app/translations'):
+    if os.system('pybabel compile -d flaskapp/translations'):
         raise RuntimeError('compile command failed')
 
 
@@ -33,6 +33,6 @@ def init(lang):
     if os.system('pybabel extract -F babel.cfg -k _l -o messages.pot .'):
         raise RuntimeError('extract command failed')
     if os.system(
-            'pybabel init -i messages.pot -d app/translations -l ' + lang):
+            'pybabel init -i messages.pot -d flaskapp/translations -l ' + lang):
         raise RuntimeError('init command failed')
     os.remove('messages.pot')

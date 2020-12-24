@@ -11,6 +11,10 @@ from flaskapp.email import send_password_reset_email
 from flask_babel import _
 from flask import g
 from flask_babel import get_locale
+from guess_language import guess_language
+from flask import jsonify
+from flaskapp.translate import translate
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -18,6 +22,9 @@ from flask_babel import get_locale
 def index():
     form = PostForm()
     if form.validate_on_submit():
+        language = guess_language(form.post.data)
+        if language == 'UNKNOWN' or len(language) > 5:
+            language = ''
         post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
         db.session.commit()
@@ -188,3 +195,11 @@ def reset_password_request():
         return redirect(url_for('login'))
     return render_template('reset_password_request.html',
                            title='Reset Password', form=form)
+
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    return jsonify({'text': translate(request.form['text'],
+                                      request.form['source_language'],
+                                      request.form['dest_language'])})

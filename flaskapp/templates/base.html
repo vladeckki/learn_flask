@@ -13,10 +13,10 @@
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('explore') }}">Explore</a></li>
                     {% if current_user.is_anonymous %}
-                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        <li><a href="{{ url_for('auth.login') }}">Login</a></li>
                     {% else %}
                         <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
-                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -43,4 +43,20 @@
     {{ super() }}
     {{ moment.include_moment() }}
     {{ moment.lang(g.locale) }}
+
+    <script>
+        function translate(sourceElem, destElem, sourceLang, destLang) {
+            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            $.post('/translate', {
+                text: $(sourceElem).text(),
+                source_language: sourceLang,
+                dest_language: destLang
+            }).done(function (response) {
+                $(destElem).text(response['text'])
+            }).fail(function () {
+                $(destElem).text("{{ _('Error: Could not contact server.') }}");
+            });
+        }
+    </script>
 {% endblock %}
+

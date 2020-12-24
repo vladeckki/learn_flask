@@ -1,6 +1,10 @@
-from flaskapp import app
+from flaskapp import app, create_app
 from flaskapp.model import User, Post, db
 from flaskapp import cli
+
+
+app = create_app()
+cli.register(app)
 
 
 @app.shell_context_processor

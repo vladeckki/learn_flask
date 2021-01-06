@@ -1,5 +1,5 @@
 from flask import render_template
-from flaskapp import app, db
+from flaskapp import db
 from . import bp
 
 

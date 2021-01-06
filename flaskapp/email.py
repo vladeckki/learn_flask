@@ -2,7 +2,6 @@ from flask_mail import Message
 from flask import current_app
 from flask import render_template
 from flaskapp import mail
-from flaskapp import app
 from threading import Thread
 
 

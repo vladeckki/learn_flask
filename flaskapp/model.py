@@ -1,12 +1,14 @@
-from datetime import datetime
-from time import time
-from flaskapp import app
-import jwt
-from flaskapp import db
-from werkzeug.security import generate_password_hash, check_password_hash
-from flaskapp import login
-from flask_login import UserMixin
+import base64
+from datetime import datetime, timedelta
 from hashlib import md5
+import json
+import os
+from time import time
+from flask import current_app, url_for
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
+from flaskapp import db, login
 
 
 followers = db.Table('followers',
